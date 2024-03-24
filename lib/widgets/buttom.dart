@@ -10,7 +10,7 @@ class MyButtom extends StatelessWidget {
     return ElevatedButton(
   style: ButtonStyle(
     backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
-    padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.symmetric(horizontal: 20 ,vertical: 10)),
+    padding: MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.symmetric(horizontal: 20 ,vertical: 10)),
     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
       RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10.0), 
@@ -22,7 +22,7 @@ class MyButtom extends StatelessWidget {
   },
   child: Text(
     text,
-    style: TextStyle(
+    style:const  TextStyle(
       color: Colors.white,
       fontSize: 20 ,
     ),
@@ -39,8 +39,8 @@ class DisableButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
   style: ButtonStyle(
-    backgroundColor: MaterialStateProperty.all<Color>(Color.fromARGB(255, 146, 154, 161)),
-    padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.symmetric(horizontal: 20 ,vertical: 10)),
+    backgroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 146, 154, 161)),
+    padding: MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.symmetric(horizontal: 20 ,vertical: 10)),
     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
       RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10.0), 
@@ -52,7 +52,7 @@ class DisableButton extends StatelessWidget {
   },
   child: Text(
     text,
-    style: TextStyle(
+    style:const TextStyle(
       color: Colors.white,
       fontSize: 20 ,
     ),

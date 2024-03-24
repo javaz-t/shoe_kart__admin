@@ -1,10 +1,10 @@
 import 'package:admin_shoe_kart__/core/const.dart';
+import 'package:admin_shoe_kart__/functions/display_data.dart';
+import 'package:admin_shoe_kart__/models/logo_model.dart';
 import 'package:admin_shoe_kart__/provider/logo_image_provider.dart';
 import 'package:admin_shoe_kart__/widgets/buttom.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-
 import 'package:provider/provider.dart';
 
 class Logo extends StatelessWidget {
@@ -45,7 +45,7 @@ class Logo extends StatelessWidget {
                       onTap: () async {
                         logoProvider.pickLogo();
                       },
-                      child: CircleAvatar(
+                      child:const  CircleAvatar(
                         radius: 50,
                         child: Text('Add logo'),
                       )),
@@ -60,45 +60,38 @@ class Logo extends StatelessWidget {
                     await logoProvider.uploadLogoDetails();
                   },
                 )
-              : DisableButton(text: 'Submit'),
+              :const  DisableButton(text: 'Submit'),
           const Divider(),
           Expanded(
-            child: StreamBuilder<QuerySnapshot>(
-                stream: logoRef.snapshots(),
-                builder: (context, snapshot) {
-                  List<QueryDocumentSnapshot<Object?>>
-                      logoQueryDocumentSnapshot = snapshot.data!.docs;
-                  return ListView.builder(
+            child: ListView.builder(
                       shrinkWrap: true,
-                      itemCount: logoQueryDocumentSnapshot.length,
+                      itemCount: logoList.length,
                       itemBuilder: (context, index) {
-                        DocumentSnapshot logoDetails =
-                        logoQueryDocumentSnapshot[index];
+                       LogoModel data = logoList[index];
                         return Container(
                             height: 80,
                             margin: const EdgeInsets.all(5),
                             child: Card(
                                 child: ListTile(
-                              title: Text(logoDetails['logoName']),
+                              title: Text(data.logoName),
                               leading: CircleAvatar(
                                 radius: 30,
-                                backgroundImage: NetworkImage(logoDetails['logoUrl']),
+                                backgroundImage: NetworkImage(data.logoUrl),
                                 backgroundColor: Colors.amber,
                               ),
                               trailing: IconButton(
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.delete,
                                   color: Colors.red,
                                 ),
                                 onPressed: () {
-                                  logoRef.doc(logoDetails['id']).delete();
+                                  logoRef.doc(data.id).delete();
                                 },
                               ),
                             )));
-                      });
-                }),
-          )
-        ],
+                      }),
+      )
+      ],
       ),
     );
   }

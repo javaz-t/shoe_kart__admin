@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
          ChangeNotifierProvider(create: (context)=>ProductDetailsProvider()),
       ],
       child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: StartPage(),
       ),
     );

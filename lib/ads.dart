@@ -1,4 +1,6 @@
 import 'package:admin_shoe_kart__/core/const.dart';
+import 'package:admin_shoe_kart__/functions/display_data.dart';
+import 'package:admin_shoe_kart__/models/ads_model.dart';
 import 'package:admin_shoe_kart__/provider/ads_provider.dart';
 import 'package:admin_shoe_kart__/widgets/buttom.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -26,26 +28,22 @@ class Ads extends StatelessWidget {
              adsProvider.adsImageUrlGetted? MyButtom(text: 'Submit', onTab: (){adsProvider.uploadAdsData();})
         :DisableButton(text: 'Submit'),
         const Divider(),
-        StreamBuilder(stream: adsRef.snapshots(), builder: (context,snapshot){
-           List<QueryDocumentSnapshot<Object?>>
-                        adsQueryDocumentSnapshot = snapshot.data!.docs;
-          return ListView.builder(shrinkWrap: true,itemCount: adsQueryDocumentSnapshot.length,itemBuilder: (context,index){
-              DocumentSnapshot adsDetails =
-                          adsQueryDocumentSnapshot[index];
+       ListView.builder(shrinkWrap: true,itemCount: adsList.length,itemBuilder: (context,index){
+        AdsModel data = adsList[index];
+       
                           return SizedBox(height: 150,width: double.infinity,
                           child:Row(
                             children: [
-                              SizedBox(height: 150,width: 300,child: Image.network(adsDetails['adsUrl'])),
+                              SizedBox(height: 150,width: 300,child: Image.network(data.adsUrl)),
                               IconButton(onPressed: (){
-                                adsRef.doc(adsDetails['id']).delete();
-                              }, icon: const Icon(Icons.delete)),
+                                adsRef.doc(data.adsId).delete();
+                              }, icon: const Icon(Icons.delete,color: Colors.red,)),      
         
                             ],
                           ) ,);
         
-          });
-        })
-          ],
+          }),
+                 ],
         ),
       ),
     );
