@@ -1,7 +1,7 @@
-import 'package:admin_shoe_kart__/ads.dart';
-import 'package:admin_shoe_kart__/details.dart';
+import 'package:admin_shoe_kart__/pages/ads.dart';
+import 'package:admin_shoe_kart__/pages/details.dart';
 import 'package:admin_shoe_kart__/functions/display_data.dart';
-import 'package:admin_shoe_kart__/logo.dart';
+import 'package:admin_shoe_kart__/pages/logo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -25,7 +25,7 @@ class _StartPageState extends State<StartPage> {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(title:const Text('Admin',style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold),),),
         body:const  Column(
           children: [
             TabBar(tabs: [

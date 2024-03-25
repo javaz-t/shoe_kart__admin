@@ -2,7 +2,7 @@ import 'package:admin_shoe_kart__/firebase_options.dart';
 import 'package:admin_shoe_kart__/provider/ads_provider.dart';
 import 'package:admin_shoe_kart__/provider/logo_image_provider.dart';
 import 'package:admin_shoe_kart__/provider/product_details_provider.dart';
-import 'package:admin_shoe_kart__/start_page.dart';
+import 'package:admin_shoe_kart__/pages/start_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

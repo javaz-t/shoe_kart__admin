@@ -21,25 +21,23 @@ class Ads extends StatelessWidget {
             adsProvider.adsImageUrlGetted==false?
             Container(
               height: 200,width: 300,decoration: BoxDecoration(border:Border.all() ),
-              child: Center(child: TextButton(child: Text('Select Images'),onPressed: (){ adsProvider.adsImagePicker();},),),
+              child: Center(child: TextButton(child:const Text('Select Images'),onPressed: (){ adsProvider.adsImagePicker();},),),
             ): SizedBox(
               height: 200,width: 300,
               child: Image.network(adsProvider.adsUrl),),
              adsProvider.adsImageUrlGetted? MyButtom(text: 'Submit', onTab: (){adsProvider.uploadAdsData();})
-        :DisableButton(text: 'Submit'),
+        :const DisableButton(text: 'Submit'),
         const Divider(),
        ListView.builder(shrinkWrap: true,itemCount: adsList.length,itemBuilder: (context,index){
         AdsModel data = adsList[index];
-       
-                          return SizedBox(height: 150,width: double.infinity,
+        return SizedBox(height: 150,width: double.infinity,
                           child:Row(
                             children: [
                               SizedBox(height: 150,width: 300,child: Image.network(data.adsUrl)),
                               IconButton(onPressed: (){
                                 adsRef.doc(data.adsId).delete();
                               }, icon: const Icon(Icons.delete,color: Colors.red,)),      
-        
-                            ],
+        ],
                           ) ,);
         
           }),
